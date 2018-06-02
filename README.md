@@ -1,8 +1,6 @@
 # AstTools
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ast_tools`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Tools for RubyVM::AST, available after ruby 2.6.0-preview2(exerimental).
 
 ## Installation
 
@@ -22,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+RubyVM::AST.parse("1 + 2").children
+# => [nil, #<RubyVM::AST::Node(NODE_OPCALL(36) 1:0, 1:5): >]
+require 'ast_tools/hash'
+RubyVM::AST.parse("1 + 2").children
+# => {"node_opcall"=>#<RubyVM::AST::Node(NODE_OPCALL(36) 1:0, 1:5): >}
+```
 
 ## Development
 
