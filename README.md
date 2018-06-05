@@ -23,9 +23,19 @@ Or install it yourself as:
 ```
 RubyVM::AST.parse("1 + 2").children
 # => [nil, #<RubyVM::AST::Node(NODE_OPCALL(36) 1:0, 1:5): >]
-require 'ast_tools/hash'
-RubyVM::AST.parse("1 + 2").children
+
+AstTools::Hash.convert(RubyVM::AST.parse("1 + 2").children)
 # => {"node_opcall"=>#<RubyVM::AST::Node(NODE_OPCALL(36) 1:0, 1:5): >}
+
+# or refinement
+
+module Foo
+  using AstTools::Hash
+  def self.foo
+    RubyVM::AST.parse("1 + 2").children
+    # => {"node_opcall"=>#<RubyVM::AST::Node(NODE_OPCALL(36) 1:0, 1:5): >}
+  end
+end
 ```
 
 ## Development
